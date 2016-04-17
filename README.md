@@ -1,4 +1,4 @@
-# pipeline-architecture
+# Pipeline architecture with modules
 
 creating extensible software with the pipeline framework by m. castro
 
