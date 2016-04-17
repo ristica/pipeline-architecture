@@ -54,6 +54,10 @@
       <Project>{BA59B694-142A-4CC9-B675-4218B1075B19}</Project>
       <Name>Commerce.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PipelineFramework\PipelineFramework.csproj">
+      <Project>{9E3865F4-DC83-4B29-99F3-8FF210A92E3E}</Project>
+      <Name>PipelineFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

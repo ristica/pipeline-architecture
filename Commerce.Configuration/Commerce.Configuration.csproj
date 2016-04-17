@@ -54,6 +54,10 @@
       <Project>{9057F22E-2D73-4279-A6B6-6349A9610F2B}</Project>
       <Name>Commerce.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PipelineFramework\PipelineFramework.csproj">
+      <Project>{9e3865f4-dc83-4b29-99f3-8ff210a92e3e}</Project>
+      <Name>PipelineFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Commerce.Common.Modules;
+using Commerce.Common.Pipeline;
 using Commerce.Entities;
+using Pipeline;
 
 namespace Commerce.Modules
 {
-    public class UpdateCartModule : ICommerceModule
+    public class UpdateCartModule : PipelineModule<CommercePipelineEvents>
     {
-        public void Initialize(CommerceEvents events, NameValueCollection config)
+        public override void Initialize(CommercePipelineEvents events, NameValueCollection parameters)
         {
-            events.UpdateCart += args =>
+            events.UpdateOrder += context =>
             {
                 Console.WriteLine("");
                 Console.WriteLine("update customer records with purchase");
                 Console.WriteLine("#################");
                 Console.WriteLine("");
-                foreach (var lineItem in args.OrderData.LineItems)
+                foreach (var lineItem in context.OrderData.LineItems)
                 {
                     for (var i = 0; i < lineItem.Quantity; i++)
                     {
-                        args.Customer.Purchases.Add(
+                        context.Customer.Purchases.Add(
                             new PurchasedItem
                             {
                                 Sku = lineItem.Sku,

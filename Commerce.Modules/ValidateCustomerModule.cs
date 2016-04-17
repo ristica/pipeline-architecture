@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Commerce.Common.Modules;
+using Commerce.Common.Pipeline;
+using Pipeline;
 
 namespace Commerce.Modules
 {
-    public class ValidateCustomerModule : ICommerceModule
+    public class ValidateCustomerModule : PipelineModule<CommercePipelineEvents>
     {
-        public void Initialize(CommerceEvents events, NameValueCollection config)
+        public override void Initialize(CommercePipelineEvents events, NameValueCollection parameters)
         {
-            events.ValidateCustomer += args =>
+            events.ValidateCustomer += context =>
             {
-                var customer = args.StoreRepository.GetCustomerByEmail(args.OrderData.CustomerEmail);
+                var customer = context.StoreRepository.GetCustomerByEmail(context.OrderData.CustomerEmail);
                 if (customer == null)
                 {
-                    throw new ArgumentNullException($"no customer with the email {args.OrderData.CustomerEmail}");
+                    throw new ArgumentNullException($"no customer with the email {context.OrderData.CustomerEmail}");
                 }
 
                 Console.WriteLine("");
@@ -22,7 +23,7 @@ namespace Commerce.Modules
                 Console.WriteLine("");
                 Console.WriteLine("\tCustomer has benn validazed.");
 
-                args.Customer = customer;
+                context.Customer = customer;
             };
         }
     }

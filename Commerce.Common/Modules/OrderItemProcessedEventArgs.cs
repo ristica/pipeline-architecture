@@ -1,5 +1,4 @@
 using System.ComponentModel;
-using Commerce.Common.Contracts;
 using Commerce.Entities;
 
 namespace Commerce.Common.Modules

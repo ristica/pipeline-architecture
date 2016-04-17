@@ -46,22 +46,23 @@
     <Compile Include="Contracts\IPaymentProvider.cs" />
     <Compile Include="Contracts\IShippingProvider.cs" />
     <Compile Include="Contracts\IStoreRepository.cs" />
-    <Compile Include="Modules\AdjustOrderEventArgs.cs" />
-    <Compile Include="Modules\BillingEventArgs.cs" />
     <Compile Include="Modules\CommerceEvents.cs" />
     <Compile Include="Modules\CommerceModuleDelegate.cs" />
     <Compile Include="Modules\ICommerceModule.cs" />
     <Compile Include="Modules\OrderItemProcessedEventArgs.cs" />
     <Compile Include="Modules\SendNotificationEventArgs.cs" />
-    <Compile Include="Modules\ShippingCostEventArgs.cs" />
-    <Compile Include="Modules\UpdateCustomerEventArgs.cs" />
-    <Compile Include="Modules\ValidateCustomerEventArgs.cs" />
+    <Compile Include="Pipeline\CommerceContext.cs" />
+    <Compile Include="Pipeline\CommercePipelineEvents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Commerce.Entities\Commerce.Entities.csproj">
       <Project>{BA59B694-142A-4CC9-B675-4218B1075B19}</Project>
       <Name>Commerce.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PipelineFramework\PipelineFramework.csproj">
+      <Project>{9E3865F4-DC83-4B29-99F3-8FF210A92E3E}</Project>
+      <Name>PipelineFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

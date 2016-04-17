@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Commerce.Common.Modules;
+using Commerce.Common.Pipeline;
+using Pipeline;
 
 namespace Commerce.Modules
 {
-    public class SendNotificationModule : ICommerceModule
+    public class SendNotificationModule : PipelineModule<CommercePipelineEvents>
     {
-        public void Initialize(CommerceEvents events, NameValueCollection config)
+        public override void Initialize(CommercePipelineEvents events, NameValueCollection parameters)
         {
-            events.SendNotification += args =>
+            events.SendNotification += context =>
             {
                 Console.WriteLine("");
                 Console.WriteLine("send invoice email");
                 Console.WriteLine("#################");
                 Console.WriteLine("");
 
-                args.MailingProvider.SendInvoiceEmail(args.OrderData);
+                context.MailingProvider.SendInvoiceEmail(context.OrderData);
             };
         }
     }

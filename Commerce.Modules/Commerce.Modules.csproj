@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdjustOrderModule.cs" />
-    <Compile Include="BillingModule.cs" />
+    <Compile Include="ProcessBillingModule.cs" />
     <Compile Include="ItemPromotionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendNotificationModule.cs" />
@@ -58,6 +58,10 @@
     <ProjectReference Include="..\Commerce.Entities\Commerce.Entities.csproj">
       <Project>{ba59b694-142a-4cc9-b675-4218b1075b19}</Project>
       <Name>Commerce.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PipelineFramework\PipelineFramework.csproj">
+      <Project>{9E3865F4-DC83-4B29-99F3-8FF210A92E3E}</Project>
+      <Name>PipelineFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

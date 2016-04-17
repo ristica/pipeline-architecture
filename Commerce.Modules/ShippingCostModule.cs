@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Specialized;
-using Commerce.Common.Modules;
+using Commerce.Common.Pipeline;
+using Pipeline;
 
 namespace Commerce.Modules
 {
-    public class ShippingCostModule : ICommerceModule
+    public class ShippingCostModule : PipelineModule<CommercePipelineEvents>
     {
-        public void Initialize(CommerceEvents events, NameValueCollection config)
+        public override void Initialize(CommercePipelineEvents events, NameValueCollection parameters)
         {
-            events.SetShippingCost += args =>
+            events.ShippingCost += context =>
             {
                 Console.WriteLine("");
                 Console.WriteLine("#################");
                 Console.WriteLine("get shipping cost");
                 Console.WriteLine("");
 
-                args.ShippingCost = args.ShippingProvider.GetShippingCost(args.OrderData);
+                context.ShippingCost = context.ShippingProvider.GetShippingCost(context.OrderData);
             };
         }
     }
